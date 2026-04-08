@@ -1,0 +1,34 @@
+def ends_with_ab(string):
+    state = "q0"  
+
+    for char in string:
+        if state == "q0":
+            if char == 'a':
+                state = "q1"
+            elif char == 'b':
+                state = "q0"
+
+        elif state == "q1":
+            if char == 'a':
+                state = "q1"
+            elif char == 'b':
+                state = "q2"
+
+        elif state == "q2":
+            if char == 'a':
+                state = "q1"
+            elif char == 'b':
+                state = "q0"
+
+   
+    return state == "q2"
+
+
+
+test_strings = ["ab", "aab", "babab", "aa", "abb", "bba"]
+
+for s in test_strings:
+    if ends_with_ab(s):
+        print(s, "→ Accepted (ends with 'ab')")
+    else:
+        print(s, "→ Rejected")
